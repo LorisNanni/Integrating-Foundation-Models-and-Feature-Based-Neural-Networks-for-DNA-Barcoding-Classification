@@ -1,1 +1,4 @@
 Integrating Foundation Models and Feature-Based Neural Networks for DNA Barcoding Classification
+
+The “ToolWavelet2026” folder contains the code for the "2-hot wavelet" method, described in Section 2.2.3 of the paper.
+
