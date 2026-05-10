@@ -2,8 +2,8 @@ Integrating Foundation Models and Feature-Based Neural Networks for DNA Barcodin
 
 The “ToolWavelet2026” folder contains the code for the "2-hot wavelet" method, described in Section 2.2.3 of the paper.
 
-IngaTest/TrainV2.fas: For the Inga dataset, we identified typographical errors in the reference version which we believe should be
+IngaTest/TrainV2.fas: Corrected version of the Inga dataset, we identified typographical errors in the reference version which we believe should be
 reported. In particular, some vertical bars (“ | ”) were mistakenly replaced with underscores (“_”), preventing the
 correct separation of species names from sequence identifiers. This resulted in incorrect species labels and altered
-the total number of classes, which may aff ect also the reported results. 
+the total number of classes, which may affect also the reported results. 
 
