@@ -1,5 +1,9 @@
 Integrating Foundation Models and Feature-Based Neural Networks for DNA Barcoding Classification
 
+The "Dataset" folder contains the datasets used in this paper, given the size constraints, 
+the only datasets not uploaded directly are the two datasets Insecta, 
+which you can download directly from the Zenodo link: https://zenodo.org/records/13858306
+
 The “ToolWavelet2026” folder contains the code for the "2-hot wavelet" method, described in Section 2.2.3 of the paper.
 
 IngaTest/TrainV2.fas: Corrected version of the Inga dataset, we identified typographical errors in the reference version which we believe should be
