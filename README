@@ -1,6 +1,6 @@
 Integrating Foundation Models and Feature-Based Neural Networks for DNA Barcoding Classification
 
-The "Dataset" folder contains the datasets used in this paper (see the related Dataset/README.txt for details of the datasets), given the size constraints, 
+The "Dataset" folder contains the datasets used in this paper (see the related Dataset/README for details of the datasets), given the size constraints, 
 the only datasets not uploaded directly are the two datasets Insecta, 
 which you can download directly from the Zenodo link: https://zenodo.org/records/13858306 The original documentation does not include a description of the 
 all_string_dnas field, it directly contains the DNA strings. Dataset/README also explains how to create the two datasets, InsectaG and InsectaS.
