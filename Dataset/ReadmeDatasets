@@ -41,6 +41,7 @@ test = [test_seen_loc test_unseen_loc];
     labelTEgenus{fold}=species2genus(labelTE{fold});
 
 NumDescribed=length(test_seen_loc);
+classiP=unique(labelTEgenus{1}(1+NumDescribed:end));
 
 At the species level:
 CNNs have issues when some classes are missing, due to the number of output neurons. 
@@ -55,23 +56,6 @@ for newLb=1:length(lab)
 end
 NewLABte=NewLABte(1:NumDescribed)';
 
-%accuracy pesata specie
-clear perfClasse
-classiP=unique(NewLABte(1:NumDescribed));
-for classe=1:length(classiP)
-    qualiP=find(NewLABte(1:NumDescribed)==classiP(classe));
-    perfClasse(classe)=sum(b(qualiP)==classiP(classe))./length(qualiP);
-end
-mean(perfClasse)
-
-[a,b]=max(SCTwoHotD');
-classiP=unique(labelTEgenus{1}(1+NumDescribed:end));
-clear perfClasse
-for classe=1:length(classiP)
-    qualiP=find(labelTEgenus{1}(1+NumDescribed:end)==classiP(classe));
-    perfClasse(classe)=sum(b(qualiP)==classiP(classe))./length(qualiP);
-end
-mean(perfClasse)
 
 InsectaG,
 InsectaS, 
