@@ -1,9 +1,10 @@
 The following datasets have been used:
 
-Beetle         
-Fish         
+Beetle, beetle-seq.fas -> 10-fold cross validation         
+Fish, fish-seq.fas -> 10-fold cross validation           
 
-
+%For the following datasets, we directly provide the training and test sets. 
+%For each dataset, there will be "dataset_name"Train.fas and "dataset_name"Test.fas.
 Cypraeidae          
 Drosophila 
 Inga
@@ -11,7 +12,8 @@ Bats
 Fishes
 Birds
 
-Simulated
+Simulated, Simulated.zip -> The datasets are located in the Simulated.zip\forBLOG\Filtered\Simulated\GNe50000 folder. 
+They are already split into training and test sets, and in the filename the value of r* indicates the fold.
 
 Unseen
 
