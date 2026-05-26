@@ -5,6 +5,8 @@ the only datasets not uploaded directly are the two datasets Insecta,
 which you can download directly from the Zenodo link: https://zenodo.org/records/13858306 The original documentation does not include a description of the 
 all_string_dnas field, it directly contains the DNA strings. Dataset/README also explains how to create the two datasets, InsectaG and InsectaS.
 
+We used accuracy and the error under the ROC curve (EUC) as performance indicators. The EUC (1- Area Uder the ROC curve) was computed using MATLAB’s official rocmetrics function.
+
 "eDNA" folder contains the code for extracting the features using the methods that built eDNA: 2-hot (section 2.2.3) and chaos game based approach (section 2.2.1);
 
 The “ToolWavelet2026” folder contains the code for the "2-hot wavelet" method, described in Section 2.2.3 of the paper.
