@@ -20,6 +20,8 @@ Unseen, Unseen.rar -> unseen.fas is the test set; supervised_train.fas is the tr
 12SFish, we directly provide the training and test sets: 12S_Fish_train.csv and 12S_Fish_test.csv
 12SFishNoise, we directly provide the training and test sets:  12S_Fish_train_Noise.csv and 12S_Fish_test_Noise.csv
 
+% https://zenodo.org/records/13858306 The original documentation does not include a description of the 
+all_string_dnas field, it directly contains the DNA strings
 InsectaG,
-InsectaS
+InsectaS, 
 
