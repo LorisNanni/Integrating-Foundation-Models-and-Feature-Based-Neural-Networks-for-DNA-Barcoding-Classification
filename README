@@ -6,6 +6,8 @@ which you can download directly from the Zenodo link: https://zenodo.org/records
 all_string_dnas field, it directly contains the DNA strings. Dataset/README also explains how to create the two datasets, InsectaG and InsectaS.
 
 We used accuracy and the error under the ROC curve (EUC) as performance indicators. The EUC (1- Area Uder the ROC curve) was computed using MATLAB’s official rocmetrics function.
+For InsectG and InsectaS the weighted accuracy is adopted. Specifically, the accuracy
+value for each class is normalized by the number of samples belonging to that class, as suggested in the literature.
 
 "eDNA" folder contains the code for extracting the features using the methods that built eDNA: 2-hot (section 2.2.3) and chaos game based approach (section 2.2.1);
 
