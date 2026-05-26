@@ -28,6 +28,7 @@ all_string_dnas field, it directly contains the DNA strings:
 load('insect_dataset.mat'); 
 % all_string_dnas stores all the sequences
 
+
 test = [test_seen_loc test_unseen_loc];
     train = [train_loc val_seen_loc val_unseen_loc];
     idTR{fold}=train;
@@ -38,6 +39,39 @@ test = [test_seen_loc test_unseen_loc];
     %Genus
     labelTRgenus{fold}=species2genus(labelTR{fold});
     labelTEgenus{fold}=species2genus(labelTE{fold});
+
+NumDescribed=length(test_seen_loc);
+
+At the species level:
+CNNs have issues when some classes are missing, due to the number of output neurons. 
+Therefore, the labels must be modified to ensure they are contiguous.
+lab=unique(labelTR{1});
+for newLb=1:length(lab)
+    NewLABtr(find(labelTR{1}==lab(newLb)))=newLb;
+end
+labelTR=NewLABtr;
+for newLb=1:length(lab)
+    NewLABte(find(labelTE{1}==lab(newLb)))=newLb;
+end
+NewLABte=NewLABte(1:NumDescribed)';
+
+%accuracy pesata specie
+clear perfClasse
+classiP=unique(NewLABte(1:NumDescribed));
+for classe=1:length(classiP)
+    qualiP=find(NewLABte(1:NumDescribed)==classiP(classe));
+    perfClasse(classe)=sum(b(qualiP)==classiP(classe))./length(qualiP);
+end
+mean(perfClasse)
+
+[a,b]=max(SCTwoHotD');
+classiP=unique(labelTEgenus{1}(1+NumDescribed:end));
+clear perfClasse
+for classe=1:length(classiP)
+    qualiP=find(labelTEgenus{1}(1+NumDescribed:end)==classiP(classe));
+    perfClasse(classe)=sum(b(qualiP)==classiP(classe))./length(qualiP);
+end
+mean(perfClasse)
 
 InsectaG,
 InsectaS, 
