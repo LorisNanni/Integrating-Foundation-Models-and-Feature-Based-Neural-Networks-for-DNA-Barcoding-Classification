@@ -15,10 +15,11 @@ Birds
 Simulated, Simulated.zip -> The datasets are located in the Simulated.zip\forBLOG\Filtered\Simulated\GNe50000 folder. 
 They are already split into training and test sets, and in the filename the value of r* indicates the fold.
 
-Unseen
+Unseen, Unseen.rar -> unseen.fas is the test set; supervised_train.fas is the training set
 
-InsectaG
+12SFish, we directly provide the training and test sets: 12S_Fish_train.csv and 12S_Fish_test.csv
+12SFishNoise, we directly provide the training and test sets:  12S_Fish_train_Noise.csv and 12S_Fish_test_Noise.csv
+
+InsectaG,
 InsectaS
 
-12SFish
-12SFishNoise 
