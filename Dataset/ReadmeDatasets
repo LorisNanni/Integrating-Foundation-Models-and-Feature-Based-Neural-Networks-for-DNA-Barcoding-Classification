@@ -1,4 +1,5 @@
-The following datasets have been used:
+The following datasets have been used,
+notice that, the species label for each sequence across all datasets (but in Insecta) is contained within the sequence header in the corresponding files:
 
 Beetle, beetle-seq.fas -> 10-fold cross validation         
 Fish, fish-seq.fas -> 10-fold cross validation           
@@ -18,10 +19,26 @@ They are already split into training and test sets, and in the filename the valu
 Unseen, Unseen.rar -> unseen.fas is the test set; supervised_train.fas is the training set
 
 12SFish, we directly provide the training and test sets: 12S_Fish_train.csv and 12S_Fish_test.csv
-12SFishNoise, we directly provide the training and test sets:  12S_Fish_train_Noise.csv and 12S_Fish_test_Noise.csv
+12SFishNoise, we directly provide the training and test sets:  12S_Fish_train_Noise.csv and 12S_Fish_test_Noise.csv. In these two files corresponding to the noise-added version, 
+the species information is not included in the sequence headers, as they are identical to those in the non-noisy version. 
+To simplify these files, only the sequences are provided in the CSVs. For the species labels, use exactly the same ordering as in the non-noisy version.
 
 % https://zenodo.org/records/13858306 The original documentation does not include a description of the 
-all_string_dnas field, it directly contains the DNA strings
+all_string_dnas field, it directly contains the DNA strings:
+load('insect_dataset.mat'); 
+% all_string_dnas stores all the sequences
+
+test = [test_seen_loc test_unseen_loc];
+    train = [train_loc val_seen_loc val_unseen_loc];
+    idTR{fold}=train;
+    idTE{fold}=test;
+    labelTR{fold}=all_labels(train);
+    labelTE{fold}=[all_labels(test) ];
+
+    %Genus
+    labelTRgenus{fold}=species2genus(labelTR{fold});
+    labelTEgenus{fold}=species2genus(labelTE{fold});
+
 InsectaG,
 InsectaS, 
 
