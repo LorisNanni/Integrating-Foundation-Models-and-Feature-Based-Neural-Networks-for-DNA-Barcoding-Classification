@@ -28,17 +28,20 @@ all_string_dnas field, it directly contains the DNA strings:
 load('insect_dataset.mat'); 
 % all_string_dnas stores all the sequences
 
+Starting from the same dataset, we use two protocols with different sequences and different labels: 
+one based on genera, the InsectaG dataset, and one based on species, InsectaS. 
+Below is the code to recreate the two different testing protocols.
 
 test = [test_seen_loc test_unseen_loc];
-    train = [train_loc val_seen_loc val_unseen_loc];
-    idTR{fold}=train;
-    idTE{fold}=test;
-    labelTR{fold}=all_labels(train);
-    labelTE{fold}=[all_labels(test) ];
+train = [train_loc val_seen_loc val_unseen_loc];
+idTR{fold}=train;
+idTE{fold}=test;
+labelTR{fold}=all_labels(train);
+labelTE{fold}=[all_labels(test) ];
 
-    %Genus
-    labelTRgenus{fold}=species2genus(labelTR{fold});
-    labelTEgenus{fold}=species2genus(labelTE{fold});
+%Genus
+labelTRgenus{fold}=species2genus(labelTR{fold});
+labelTEgenus{fold}=species2genus(labelTE{fold});
 
 NumDescribed=length(test_seen_loc);
 classiP=unique(labelTEgenus{1}(1+NumDescribed:end));
