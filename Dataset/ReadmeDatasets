@@ -1,8 +1,12 @@
 The following datasets have been used,
 notice that, the species label for each sequence across all datasets (but in Insecta) is contained within the sequence header in the corresponding files:
 
+
+
 Beetle, beetle-seq.fas -> 10-fold cross validation         
 Fish, fish-seq.fas -> 10-fold cross validation           
+
+
 
 %For the following datasets, we directly provide the training and test sets. 
 %For each dataset, there will be "dataset_name"Train.fas and "dataset_name"Test.fas.
@@ -13,42 +17,44 @@ Bats
 Fishes
 Birds
 
+
+
 Simulated, Simulated.zip -> The datasets are located in the Simulated.zip\forBLOG\Filtered\Simulated\GNe50000 folder. 
 They are already split into training and test sets, and in the filename the value of r* indicates the fold.
 
+
+
 Unseen, Unseen.rar -> unseen.fas is the test set; supervised_train.fas is the training set
+
+
 
 12SFish, we directly provide the training and test sets: 12S_Fish_train.csv and 12S_Fish_test.csv
 12SFishNoise, we directly provide the training and test sets:  12S_Fish_train_Noise.csv and 12S_Fish_test_Noise.csv. In these two files corresponding to the noise-added version, 
 the species information is not included in the sequence headers, as they are identical to those in the non-noisy version. 
 To simplify these files, only the sequences are provided in the CSVs. For the species labels, use exactly the same ordering as in the non-noisy version.
 
-% https://zenodo.org/records/13858306 The original documentation does not include a description of the 
+
+
+InsectaG  &  InsectaS
+https://zenodo.org/records/13858306 The original documentation does not include a description of the 
 all_string_dnas field, it directly contains the DNA strings:
 load('insect_dataset.mat'); 
 % all_string_dnas stores all the sequences
-
 Starting from the same dataset, we use two protocols with different sequences and different labels: 
 one based on genera, the InsectaG dataset, and one based on species, InsectaS. 
-Below is the code to recreate the two different testing protocols.
+Below is the code to recreate the two different testing protocols:
 
-test = [test_seen_loc test_unseen_loc];
+%InsectaS - species
+test = [test_seen_loc];
 train = [train_loc val_seen_loc val_unseen_loc];
+NumDescribed=length(test_seen_loc);
 idTR{fold}=train;
 idTE{fold}=test;
 labelTR{fold}=all_labels(train);
-labelTE{fold}=[all_labels(test) ];
-
-%Genus
-labelTRgenus{fold}=species2genus(labelTR{fold});
-labelTEgenus{fold}=species2genus(labelTE{fold});
-
-NumDescribed=length(test_seen_loc);
-classiP=unique(labelTEgenus{1}(1+NumDescribed:end));
-
-At the species level:
-CNNs have issues when some classes are missing, due to the number of output neurons. 
-Therefore, the labels must be modified to ensure they are contiguous.
+labelTE{fold}=all_labels(test);
+%At the species level:
+%CNNs have issues when some classes are missing, due to the number of output neurons. 
+%Therefore, the labels must be modified to ensure they are contiguous.
 lab=unique(labelTR{1});
 for newLb=1:length(lab)
     NewLABtr(find(labelTR{1}==lab(newLb)))=newLb;
@@ -57,9 +63,15 @@ labelTR=NewLABtr;
 for newLb=1:length(lab)
     NewLABte(find(labelTE{1}==lab(newLb)))=newLb;
 end
-NewLABte=NewLABte(1:NumDescribed)';
+%now you can train/test your approach using the labels stored in NewLABtr & NewLABte
+
+%InsectaG - Genus
+test = [test_unseen_loc];
+labelTRgenus{fold}=species2genus(labelTR{fold});
+labelTEgenus{fold}=species2genus(all_labels(test));
 
 
-InsectaG,
-InsectaS, 
+
+
+
 
