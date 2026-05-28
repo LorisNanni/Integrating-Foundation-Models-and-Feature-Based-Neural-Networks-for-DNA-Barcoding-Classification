@@ -45,11 +45,13 @@ one based on genera, the InsectaG dataset, and one based on species, InsectaS.
 Below is the code to recreate the two different testing protocols:
 
 %InsectaS - species
-test = [test_seen_loc];
-train = [train_loc val_seen_loc val_unseen_loc];
-NumDescribed=length(test_seen_loc);
+test = [test_seen_loc];%In this vector, we store the indices of the patterns belonging to the test set 
+train = [train_loc val_seen_loc val_unseen_loc];%it contains the indices for the training and validation sets. Therefore, if you need a validation set, 
+%check and extract the indices corresponding to the two val* subsets
 idTR{fold}=train;
 idTE{fold}=test;
+%Using these indices, you can then extract the sequences from the all_string_dnas structure and subsequently compute the descriptors needed to train a neural network.
+
 labelTR{fold}=all_labels(train);
 labelTE{fold}=all_labels(test);
 %At the species level:
@@ -66,7 +68,8 @@ end
 %now you can train/test your approach using the labels stored in NewLABtr & NewLABte
 
 %InsectaG - Genus
-test = [test_unseen_loc];
+test = [test_unseen_loc];%In this vector, we store the indices of the patterns belonging to the test set
+%As you can see, the test set is different in InsectaS and InsectaG
 labelTRgenus{fold}=species2genus(labelTR{fold});
 labelTEgenus{fold}=species2genus(all_labels(test));
 
