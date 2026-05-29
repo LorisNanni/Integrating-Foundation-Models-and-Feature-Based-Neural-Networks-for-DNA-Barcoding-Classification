@@ -59,19 +59,19 @@ labelTE{fold}=all_labels(test);
 %Therefore, the labels must be modified to ensure they are contiguous.
 lab=unique(labelTR{1});
 for newLb=1:length(lab)
-    NewLABtr(find(labelTR{1}==lab(newLb)))=newLb;
+    NewLABtr(find(labelTR{1}==lab(newLb)))=newLb;%training labels
 end
 labelTR=NewLABtr;
 for newLb=1:length(lab)
-    NewLABte(find(labelTE{1}==lab(newLb)))=newLb;
+    NewLABte(find(labelTE{1}==lab(newLb)))=newLb;%test labels
 end
 %now you can train/test your approach using the labels stored in NewLABtr & NewLABte
 
 %InsectaG - Genus
 test = [test_unseen_loc];%In this vector, we store the indices of the patterns belonging to the test set
 %As you can see, the test set is different in InsectaS and InsectaG
-labelTRgenus{fold}=species2genus(labelTR{fold});
-labelTEgenus{fold}=species2genus(all_labels(test));
+labelTRgenus{fold}=species2genus(labelTR{fold});%training labels
+labelTEgenus{fold}=species2genus(all_labels(test));%test labels
 
 
 
