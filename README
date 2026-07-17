@@ -13,6 +13,11 @@ value for each class is normalized by the number of samples belonging to that cl
 
 The “ToolWavelet2026” folder contains the code for the "2-hot wavelet" method, described in Section 2.2.3 of the paper.
 
+The "3DCV_Code" folder contains the code for 3D-CGR - Vision Transformers, described in Section 2.2.2 and 2.3.1 of the paper. Remember that if you use the logits produced by this approach and then want to combine them
+with another network whose output has already been normalized using Softmax, you should first apply Softmax 
+(or another suitable normalization method) to the 3DCV logits. 
+More generally, always verify that the score ranges of the outputs you are combining are comparable; otherwise, the fusion may be biased.
+
 IngaTest/TrainV2.fas: Corrected version of the Inga dataset, we identified typographical errors in the reference version which we believe should be
 reported. In particular, some vertical bars (“ | ”) were mistakenly replaced with underscores (“_”), preventing the
 correct separation of species names from sequence identifiers. This resulted in incorrect species labels and altered
