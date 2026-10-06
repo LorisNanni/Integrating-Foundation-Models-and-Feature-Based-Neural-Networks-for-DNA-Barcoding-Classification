@@ -17,6 +17,12 @@ The "3DCV_Code" folder contains the code for 3D-CGR - Vision Transformers, descr
 Please note that, when performing the different fusion strategies, the scores are normalized to ensure compatible value ranges for the sum rule. Please refer to the paper for further details.
 
 The "Barcode MAE" folder contains the README and code for fine-tuning the Barcode MAE foundation model, following the procedure described in our paper.
+## Label ordering and factorization - "Barcode MAE" 
+Labels are factorized from the training set using `pandas.factorize()` with `sort=True`. This ordering is required to obtain results compatible with the other methods.
+Using `sort=False` assigns indices according to the order in which labels first appear in the training set, resulting in a different class-to-index mapping. 
+For example, in the fishes dataset, `Ompok bimaculatus` is assigned label `48` with `sort=True`, but `0` with `sort=False`.
+Using `sort=False` led to apparently random accuracy values for some datasets because the class-index mapping was inconsistent with the other methods. 
+Therefore, we use `sort=True` and reuse the resulting label set for the test data to ensure a consistent mapping and comparable results.
 
 IngaTest/TrainV2.fas: Corrected version of the Inga dataset, we identified typographical errors in the reference version which we believe should be
 reported. In particular, some vertical bars (“ | ”) were mistakenly replaced with underscores (“_”), preventing the
