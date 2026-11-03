@@ -4,6 +4,13 @@ The "Dataset" folder contains the datasets used in this paper (see the related D
 the only datasets not uploaded directly are the two datasets Insecta, 
 which you can download directly from the Zenodo link: https://zenodo.org/records/13858306 The original documentation does not include a description of the 
 all_string_dnas field, it directly contains the DNA strings. Dataset/README also explains how to create the two datasets, InsectaG and InsectaS.
+The “Dataset\FishSplit indices are 1-based 1” and “Dataset\BeetleSplit indices are 1-based 1” contain the exact partitioning of the dataset into 10 folds, allowing the experiments 
+reported in our study to be reproduced exactly. Each file contains the indices of the patterns assigned to each fold. The numbers 1 to 10 in the filenames identify the corresponding fold. 
+For example, if the number 7 appears in the training file for a given fold, the seventh pattern in the dataset is assigned to the training set. If it appears in the test file, 
+the seventh pattern is assigned to the test set.
+Important: Pattern indices are 1-based, meaning that the first pattern has index 1, not 0. Therefore, when using a programming language with 0-based indexing, you must subtract 1 
+from each index before accessing the corresponding pattern.
+
 
 We used accuracy and the error under the ROC curve (EUC) as performance indicators. The EUC (1- Area Uder the ROC curve) was computed using MATLAB’s official rocmetrics function.
 For InsectG and InsectaS the weighted accuracy is adopted. Specifically, the accuracy
